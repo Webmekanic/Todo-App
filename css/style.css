@@ -1,0 +1,39 @@
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #161722;
+  color: white;
+}
+
+header {
+  border: 2px solid #e4e5f1;
+  border: 2px solid linear-gradient #57ddff to #c058f3;
+  height: 40vh;
+  width: 100%;
+}
+
+header main {
+  max-width: 395px;
+  padding: 0 30px;
+  margin: 0 auto;
+  border: 2px solid white;
+  margin-top: 3.5rem;
+}
+
+header .inputSection {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
