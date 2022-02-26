@@ -1,26 +1,5 @@
-// Primary Colors
-$bright-blue: hsl(220, 98%, 61%);
-$check-background: linear-gradient hsl(192, 100%, 67%) to hsl(280, 87%, 65%);
-
-// Light Themes
-.light {
-  $very-light-gray: hsl(0, 0%, 98%);
-  $very-light-grayish-blue: hsl(236, 33%, 92%);
-  $light-grayish-blue: hsl(233, 11%, 84%);
-  $dark-grayish-blue: hsl(236, 9%, 61%);
-  $very-dark-grayish-blue: hsl(235, 19%, 35%);
-}
-
-// Dark Themes
-.dark {
-  $very-dark-blue: hsl(235, 21%, 11%);
-  $very-dark-desaturated-blue: hsl(235, 24%, 19%);
-  $light-grayish-blue: hsl(234, 39%, 85%);
-  $light-grayish-blue: hsl(236, 33%, 92%); //(hover)
-  $dark-grayish-blue: hsl(234, 11%, 52%);
-  $very-dark-grayish-blue: hsl(233, 14%, 35%);
-  $very-dark-grayish-blue: hsl(237, 14%, 26%);
-}
+@import "config";
+@import "utilities";
 
 * {
   box-sizing: border-box;
@@ -29,31 +8,90 @@ $check-background: linear-gradient hsl(192, 100%, 67%) to hsl(280, 87%, 65%);
 }
 
 body {
-  background-color: $very-dark-blue;
+  background-color: black;
   color: white;
 }
 
 // Header
 header {
-  border: 2px solid $light-grayish-blue;
-  border: 2px solid $check-background;
-  height: 45vh;
+  border: 2px solid wheat;
+  height: 35vh;
   width: 100%;
-  // background-image: url("./images/bg-mobile-dark.jpg");
-  // background-repeat: no-repeat;
-  // background-position: center;
-  // background-size: contain;
+  // background: $background-image-mobile-dark;
+  // background-color: rebeccapurple;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 
   main {
-    max-width: 400px;
-    padding: 0 30px;
+    max-width: 375px;
     margin: 0 auto;
-    border: 2px solid white;
-    margin-top: 3.5rem;
-  }
-  .inputSection {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    margin-top: 3.3rem;
+
+    .inputSection {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      h1 {
+        text-transform: uppercase;
+        letter-spacing: 0.5rem;
+        font-size: 18px;
+        font-weight: 700;
+      }
+      #sun {
+        height: 18px;
+        width: 18px;
+      }
+    }
+
+    #taskForm {
+      // border: 2px solid red;
+      margin-top: 2.3rem;
+      background-color: $very-dark-desaturated-blue;
+      border-radius: 4px;
+      display: flex;
+      flex-direction: row;
+
+      .inputCircle {
+        border: 1px solid $very-dark-grayish-blue;
+        width: 17px;
+        height: 17px;
+        margin: 1rem 0 1rem 1rem;
+        border-radius: 50%;
+        // display: none;
+      }
+
+      #enterTask {
+        width: 90%;
+        padding: 13px;
+        background-color: $very-dark-desaturated-blue;
+        outline: none;
+        border: none;
+        color: $light-grayish-blue;
+        font-size: 13px;
+        font-weight: 400;
+      }
+    }
   }
 }
+.collection {
+  // border: 2px solid red;
+  // margin-top: -3rem;
+  background-color: $very-dark-desaturated-blue;
+  max-width: 375px;
+  margin: -2rem auto;
+  border-radius: 4px;
+}
+
+//  .collection-item {
+//     list-style: none;
+//     display: flex;
+//     flex-direction: row;
+//     justify-content: space-between;
+//     border-bottom: 1px solid #bebebe;
+//     padding: 0.5rem;
+//   }
+// li:last-child {
+//     border-bottom: none;
+//   }

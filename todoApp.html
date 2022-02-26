@@ -9,18 +9,39 @@
   </head>
   <body>
     <header>
-      <!-- <img
-        id="headerBackground"
-        src="./images/bg-mobile-dark.jpg"
-        alt="Mobile Background"
-      /> -->
       <main>
         <section class="inputSection">
           <h1>todo</h1>
-          <img src="./images/icon-sun.svg" alt="Sun Icon" />
+          <img id="sun" src="./images/icon-sun.svg" alt="Sun Icon" />
         </section>
+
+        <!-- Task Input -->
+        <form id="taskForm">
+          <div class="inputCircle"></div>
+          <input
+            type="text"
+            name=""
+            id="enterTask"
+            placeholder="Create a new todo..."
+          />
+        </form>
       </main>
     </header>
+
+    <!-- <ul class="taskList">
+      <li class="task-item">
+        <input type="checkbox" name="" id="" />
+        List Item
+        <a href="#" class="delete-item secondary-content">
+          <i class="fas fa-trash-alt"></i>
+        </a>
+      </li>
+    </ul> -->
+    <section class="collection">
+      <input type="checkbox" name="" id="" />
+      <label for="">Complete online JavaScript course</label>
+      <img src="./images/icon-cross.svg" alt="" srcset="" />
+    </section>
     <script src="todoApp.js"></script>
   </body>
 </html>
