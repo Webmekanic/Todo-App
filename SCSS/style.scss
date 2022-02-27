@@ -75,34 +75,37 @@ header {
     }
   }
 }
-.collection {
+.taskList {
   // border: 2px solid red;
   // margin-top: -3rem;
   background-color: $very-dark-desaturated-blue;
   max-width: 375px;
   margin: -2rem auto;
   border-radius: 4px;
-  padding: 13px;
+  // padding: 13px;
 
-  #mycheck {
-    opacity: 0;
-  }
-  label {
-    position: relative;
+  .tasklist-item {
     // border: 2px solid red;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 1px solid $very-dark-grayish-blue;
+    padding: 0.5rem;
   }
-
-  label::before {
-    content: url("./images/bg-desktop-dark.jpg");
-    // border: 1px solid green;
-    width: 15px;
-    height: 15px;
-    position: absolute;
-    left: -20px;
+  .checkMark {
+    // border: 2px solid red;
+    width: 17px;
+    height: 17px;
     border-radius: 50%;
+    position: relative;
+    // padding: 5px;
     background: $check-background;
-    // background: url(./images/icon-check.svg);
-    // background-color: linear-gradient hsl(192, 100%, 67%) to hsl(280, 87%, 65%);
+  }
+  #checkIcon {
+    position: absolute;
+    top: 4px;
+    left: 50%;
+    transform: translate(-50%);
   }
 }
 
