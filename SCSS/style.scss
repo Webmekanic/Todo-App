@@ -82,6 +82,28 @@ header {
   max-width: 375px;
   margin: -2rem auto;
   border-radius: 4px;
+  padding: 13px;
+
+  #mycheck {
+    opacity: 0;
+  }
+  label {
+    position: relative;
+    // border: 2px solid red;
+  }
+
+  label::before {
+    content: url("./images/bg-desktop-dark.jpg");
+    // border: 1px solid green;
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    left: -20px;
+    border-radius: 50%;
+    background: $check-background;
+    // background: url(./images/icon-check.svg);
+    // background-color: linear-gradient hsl(192, 100%, 67%) to hsl(280, 87%, 65%);
+  }
 }
 
 //  .collection-item {
