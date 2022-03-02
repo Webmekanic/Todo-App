@@ -119,3 +119,28 @@ header {
     font-family: 700;
   }
 }
+.itemLeft {
+  // border: 2px solid red;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0.75rem;
+}
+
+.taskStatus {
+  // border: 2px solid red;
+  max-width: 375px;
+  margin: 3rem auto;
+  display: flex;
+  flex-direction: row;
+  border-radius: 4px;
+  padding: 0.75rem;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  background-color: $very-dark-desaturated-blue;
+
+  .taskStatusItem {
+    list-style: none;
+  }
+}
