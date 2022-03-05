@@ -90,19 +90,24 @@ header {
     padding: 0.75rem;
   }
   .checkMark {
+    border: 1px solid $very-dark-grayish-blue;
     width: 17px;
     height: 17px;
     border-radius: 50%;
     position: relative;
-    background: $check-background;
+    // background: $check-background;
     margin-left: 0.5rem;
+    // opacity:
   }
+  .checkMark:hover {
+  }
+
   .checkIcon {
-    // border: 2px solid rebeccapurple;
     position: absolute;
     top: 4px;
     left: 50%;
     transform: translate(-50%);
+    display: none;
   }
   #task {
     flex: 1;
@@ -110,6 +115,7 @@ header {
     font-size: 13px;
     color: $light-grayish-blue;
   }
+
   .deleteItem {
     // border: 2px solid blue;
     width: 13px;
@@ -125,6 +131,9 @@ header {
   flex-direction: row;
   justify-content: space-between;
   padding: 0.75rem;
+  color: $very-dark-grayish-blue1;
+  font-size: 13px;
+  font-weight: 500;
 }
 
 .taskStatus {
@@ -142,5 +151,13 @@ header {
 
   .taskStatusItem {
     list-style: none;
+    margin-left: 1.5rem;
+    font-size: 13px;
+    color: $very-dark-grayish-blue1;
+    font-weight: 550;
+    cursor: pointer;
+  }
+  .taskStatusItem:hover {
+    color: $bright-blue;
   }
 }
