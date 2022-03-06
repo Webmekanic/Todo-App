@@ -14,10 +14,10 @@ body {
 
 // Header
 header {
-  border: 2px solid wheat;
+  border: 1px solid transparent;
   height: 35vh;
   width: 100%;
-  // background: $background-image-mobile-dark;
+  background-image: $image-mobile-dark;
   // background-color: rebeccapurple;
   background-repeat: no-repeat;
   background-position: center;
@@ -99,8 +99,8 @@ header {
     margin-left: 0.5rem;
     // opacity:
   }
-  .checkMark:hover {
-  }
+  // .checkMark:hover {
+  // }
 
   .checkIcon {
     position: absolute;
@@ -114,6 +114,7 @@ header {
     margin-left: 0.9rem;
     font-size: 13px;
     color: $light-grayish-blue;
+    // text-decoration: line-through;
   }
 
   .deleteItem {
