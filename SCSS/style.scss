@@ -1,5 +1,6 @@
 @import "config";
 @import "utilities";
+@import url(https://fonts.google.com/specimen/Josefin+Sans);
 
 * {
   box-sizing: border-box;
@@ -10,6 +11,7 @@
 body {
   background-color: black;
   color: white;
+  font-family: "Josefin Sans", sans-serif;
 }
 
 // Header
@@ -18,7 +20,6 @@ header {
   height: 35vh;
   width: 100%;
   background-image: $image-mobile-dark;
-  // background-color: rebeccapurple;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -46,7 +47,6 @@ header {
     }
 
     #taskForm {
-      // border: 2px solid red;
       margin-top: 2.3rem;
       background-color: $very-dark-desaturated-blue;
       border-radius: 4px;
@@ -59,7 +59,6 @@ header {
         height: 17px;
         margin: 1rem 0 1rem 1rem;
         border-radius: 50%;
-        // display: none;
       }
 
       #enterTask {
@@ -87,7 +86,7 @@ header {
     flex-direction: row;
     justify-content: space-between;
     border-bottom: 1px solid $very-dark-grayish-blue;
-    padding: 0.75rem;
+    padding: 0.9rem;
   }
   .checkMark {
     border: 1px solid $very-dark-grayish-blue;
@@ -95,12 +94,8 @@ header {
     height: 17px;
     border-radius: 50%;
     position: relative;
-    // background: $check-background;
     margin-left: 0.5rem;
-    // opacity:
   }
-  // .checkMark:hover {
-  // }
 
   .checkIcon {
     position: absolute;
@@ -114,11 +109,10 @@ header {
     margin-left: 0.9rem;
     font-size: 13px;
     color: $light-grayish-blue;
-    // text-decoration: line-through;
+    text-decoration: line-through;
   }
 
   .deleteItem {
-    // border: 2px solid blue;
     width: 13px;
     height: 13px;
     margin: auto;
@@ -127,7 +121,6 @@ header {
   }
 }
 .itemLeft {
-  // border: 2px solid red;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -138,7 +131,6 @@ header {
 }
 
 .taskStatus {
-  // border: 2px solid red;
   max-width: 375px;
   margin: 3rem auto;
   display: flex;
