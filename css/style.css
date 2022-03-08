@@ -164,22 +164,28 @@ h1 {
   font-family: 700;
 }
 .itemLeft {
+  /* border: 2px solid red; */
+  max-width: 375px;
+  margin: 2rem auto;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 0.75rem;
+  padding: 1rem;
   color: var(--very-dark-grayish-blue1);
+  background-color: var(--very-dark-desaturated-blue);
   font-size: 13px;
   font-weight: 500;
+  /* z-index: -7; */
 }
 
 .taskStatus {
+  /* border: 2px solid red; */
   max-width: 375px;
-  margin: 3rem auto;
+  margin: -1rem auto;
   display: flex;
   flex-direction: row;
   border-radius: 4px;
-  padding: 0.75rem;
+  padding: 1rem;
   align-items: center;
   text-align: center;
   justify-content: center;
