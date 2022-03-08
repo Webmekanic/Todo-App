@@ -128,7 +128,7 @@ h1 {
 .checkMark:hover {
   width: 17px;
   height: 17px;
-  border: double 1px transparent;
+  border: double 1.5px transparent;
   border-radius: 80px;
   background-image: linear-gradient(
       var(--very-dark-desaturated-blue),
