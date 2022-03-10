@@ -61,7 +61,6 @@ main {
   margin-top: 3.3rem;
 }
 .inputSection {
-  /* border: 2px solid red; */
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -142,6 +141,14 @@ h1 {
   background-origin: border-box;
   background-clip: content-box, border-box;
 }
+.checkMark.active {
+  background: linear-gradient(
+    to right,
+    var(--linear-gradient1),
+    var(--linear-gradient2)
+  );
+  border: none;
+}
 .checkIcon {
   position: absolute;
   top: 4px;
@@ -149,12 +156,19 @@ h1 {
   transform: translate(-50%);
   display: none;
 }
-#task {
+.checkIcon.active {
+  display: block;
+}
+
+.task {
   flex: 1;
   margin-left: 0.9rem;
   font-size: 13px;
   color: var(--light-grayish-blue);
+}
+.task.strike {
   text-decoration: line-through;
+  color: var(--very-dark-grayish-blue1);
 }
 .deleteItem {
   width: 13px;
@@ -164,7 +178,6 @@ h1 {
   font-family: 700;
 }
 .itemLeft {
-  /* border: 2px solid red; */
   max-width: 375px;
   margin: 2rem auto;
   display: flex;
@@ -175,11 +188,9 @@ h1 {
   background-color: var(--very-dark-desaturated-blue);
   font-size: 13px;
   font-weight: 500;
-  /* z-index: -7; */
 }
 
 .taskStatus {
-  /* border: 2px solid red; */
   max-width: 375px;
   margin: -1rem auto;
   display: flex;
