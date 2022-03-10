@@ -29,7 +29,6 @@ class TaskUI {
   }
 
   checkedTask(target) {
-    console.log(target)
     if (target.classList.contains("checkMark")) {
       target.classList.add("active")
       target.lastElementChild.classList.add("active")
@@ -38,16 +37,26 @@ class TaskUI {
     if (target.classList.contains("checkIcon")) {
       target.classList.remove("active")
       target.parentElement.classList.remove("active")
-      console.log(target)
       target.parentElement.nextElementSibling.classList.remove("strike")
     }
   }
-
   // Delete Task
   deleteTask(target) {
     if (target.className === "deleteItem") {
       target.parentElement.remove()
     }
+  }
+
+  clearCompleted(clear) {
+    const taskList = document.querySelector(".taskList")
+    while (taskList.firstChild) {
+      taskList.removeChild(taskList.firstChild)
+    }
+  }
+
+  taskLength(length) {
+    const taskLength = document.querySelector("#taskLength")
+    console.log(taskLength)
   }
 }
 
@@ -63,15 +72,27 @@ document.querySelector("#taskForm").addEventListener("keypress", (e) => {
   }
 })
 
+// Event listener for Delete Task
 document.querySelector(".taskList").addEventListener("click", (e) => {
   const taskui = new TaskUI()
   taskui.deleteTask(e.target)
   e.preventDefault()
 })
 
-// Event Listener for Delete
+// Event Listener for checked task
 document.querySelector(".taskList").addEventListener("click", (e) => {
   const taskui = new TaskUI()
   taskui.checkedTask(e.target)
   e.preventDefault()
 })
+
+// Event Listener for clear task
+document.documentElement
+  .querySelector(".clearTask")
+  .addEventListener("click", (e) => {
+    const taskList = document.querySelector(".taskList")
+    const taskui = new TaskUI()
+    taskui.clearCompleted(e.clear)
+
+    e.preventDefault()
+  })
