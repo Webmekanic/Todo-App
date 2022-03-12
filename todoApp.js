@@ -1,6 +1,7 @@
 class Todo {
-  constructor(taskInput) {
+  constructor(taskInput, taskList) {
     this.taskInput = taskInput
+    this.taskList = taskList
   }
 }
 
@@ -40,43 +41,61 @@ class TaskUI {
       target.parentElement.nextElementSibling.classList.remove("strike")
     }
   }
+
+  allTask(todo) {
+    const taskLength = document.querySelector("#taskLength")
+    const taskList = document.querySelectorAll(".tasklist-item")
+    for (let i = 0; i < taskList.length; i++) {
+      console.log(taskList[i])
+      // if (taskList[i].classList.contains("checkMark")) {
+
+      // }
+    }
+  }
+
   // Delete Task
   deleteTask(target) {
+    const taskLength = document.querySelector("#taskLength")
+    const taskList = document.querySelector(".taskList")
+
     if (target.className === "deleteItem") {
       target.parentElement.remove()
+      taskLength.textContent = taskList.childElementCount
     }
   }
 
   clearCompleted(clear) {
+    const taskLength = document.querySelector("#taskLength")
     const taskList = document.querySelector(".taskList")
     while (taskList.firstChild) {
       taskList.removeChild(taskList.firstChild)
+      taskLength.textContent = taskList.childElementCount
     }
   }
-
-  taskLength(length) {
-    const taskLength = document.querySelector("#taskLength")
-    console.log(taskLength)
-  }
 }
-
-// Event Listeners
-document.querySelector("#taskForm").addEventListener("keypress", (e) => {
-  const taskInput = document.querySelector("#enterTask").value
-
-  const todo = new Todo(taskInput)
-  const taskui = new TaskUI()
-  if (e.key === "Enter") {
-    taskui.addTask(todo)
-    e.preventDefault()
-  }
-})
 
 // Event listener for Delete Task
 document.querySelector(".taskList").addEventListener("click", (e) => {
   const taskui = new TaskUI()
   taskui.deleteTask(e.target)
+
   e.preventDefault()
+})
+
+// Event Listeners
+document.querySelector("#taskForm").addEventListener("keypress", (e) => {
+  const taskInput = document.querySelector("#enterTask").value
+  const taskList = document.querySelector(".taskList")
+
+  const todo = new Todo(taskInput, taskList)
+  const taskui = new TaskUI()
+
+  if (e.key === "Enter") {
+    taskui.addTask(todo)
+    taskui.allTask(todo)
+
+    e.preventDefault()
+  }
 })
 
 // Event Listener for checked task
@@ -86,13 +105,26 @@ document.querySelector(".taskList").addEventListener("click", (e) => {
   e.preventDefault()
 })
 
-// Event Listener for clear task
-document.documentElement
-  .querySelector(".clearTask")
-  .addEventListener("click", (e) => {
-    const taskList = document.querySelector(".taskList")
-    const taskui = new TaskUI()
-    taskui.clearCompleted(e.clear)
+// task length
+// document.querySelector("#taskLength")
 
-    e.preventDefault()
-  })
+// Event Listener for clear task
+document.querySelector(".clearTask").addEventListener("click", (e) => {
+  const taskList = document.querySelector(".taskList")
+  const taskui = new TaskUI()
+  taskui.clearCompleted(e.clear)
+
+  e.preventDefault()
+})
+
+// Event listener for All
+document.querySelector("#allTask").addEventListener("click", (e) => {
+  const taskList = document.querySelector(".taskList")
+  const taskui = new TaskUI()
+  // taskui.allTask(e.all)
+
+  e.preventDefault()
+})
+
+// Event listener for Active
+// Event listener for completed
