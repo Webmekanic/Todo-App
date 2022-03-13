@@ -1,12 +1,14 @@
 class Todo {
   constructor(taskInput, taskList) {
-    this.taskInput = taskInput
+    this.taskInput
     this.taskList = taskList
+    // this.todo =
   }
 }
 
 class TaskUI {
-  addTask(todo) {
+  addTask(todo, taskInput) {
+    this.taskInput = taskInput
     const taskList = document.querySelector(".taskList")
     // create element for todo
     const li = document.createElement("li")
@@ -20,7 +22,7 @@ class TaskUI {
     li.appendChild(section)
     const pTag = document.createElement("p")
     pTag.className = "task"
-    pTag.innerHTML = `${todo.taskInput}`
+    pTag.innerHTML = `${this.taskInput}`
     li.appendChild(pTag)
     const deleteImg = document.createElement("img")
     deleteImg.className = "deleteItem"
@@ -42,42 +44,45 @@ class TaskUI {
     }
   }
 
-  allTask(todo) {
-    const taskLength = document.querySelector("#taskLength")
-    const taskList = document.querySelectorAll(".tasklist-item")
-    for (let i = 0; i < taskList.length; i++) {
-      console.log(taskList[i])
-      // if (taskList[i].classList.contains("checkMark")) {
-
-      // }
+  allTask() {
+    this.taskList = taskList
+    const taskLeft = document.querySelector("#taskLength")
+    let x = []
+    for (let i = 0; i < this.taskList.children.length; i++) {
+      if (!this.taskList.children[i].firstChild.classList.contains("active")) {
+        x.push(this.taskList.children[i])
+      }
     }
+    taskLeft.textContent = x.length
   }
 
   // Delete Task
   deleteTask(target) {
     const taskLength = document.querySelector("#taskLength")
-    const taskList = document.querySelector(".taskList")
-
+    this.taskList = taskList
     if (target.className === "deleteItem") {
       target.parentElement.remove()
-      taskLength.textContent = taskList.childElementCount
     }
   }
 
   clearCompleted(clear) {
     const taskLength = document.querySelector("#taskLength")
-    const taskList = document.querySelector(".taskList")
-    while (taskList.firstChild) {
-      taskList.removeChild(taskList.firstChild)
-      taskLength.textContent = taskList.childElementCount
+    this.taskList = taskList
+    while (this.taskList.firstChild) {
+      this.taskList.removeChild(this.taskList.firstChild)
+      taskLength.textContent = this.taskList.childElementCount
     }
   }
 }
 
 // Event listener for Delete Task
+const taskList = document.querySelector(".taskList")
+const taskui = new TaskUI()
+const todo = new Todo(taskList)
+
 document.querySelector(".taskList").addEventListener("click", (e) => {
-  const taskui = new TaskUI()
   taskui.deleteTask(e.target)
+  taskui.allTask()
 
   e.preventDefault()
 })
@@ -85,14 +90,12 @@ document.querySelector(".taskList").addEventListener("click", (e) => {
 // Event Listeners
 document.querySelector("#taskForm").addEventListener("keypress", (e) => {
   const taskInput = document.querySelector("#enterTask").value
-  const taskList = document.querySelector(".taskList")
 
-  const todo = new Todo(taskInput, taskList)
   const taskui = new TaskUI()
 
   if (e.key === "Enter") {
-    taskui.addTask(todo)
-    taskui.allTask(todo)
+    taskui.addTask(todo, taskInput)
+    taskui.allTask()
 
     e.preventDefault()
   }
@@ -100,17 +103,15 @@ document.querySelector("#taskForm").addEventListener("keypress", (e) => {
 
 // Event Listener for checked task
 document.querySelector(".taskList").addEventListener("click", (e) => {
-  const taskui = new TaskUI()
   taskui.checkedTask(e.target)
+  taskui.allTask()
   e.preventDefault()
 })
 
-// task length
-// document.querySelector("#taskLength")
-
 // Event Listener for clear task
 document.querySelector(".clearTask").addEventListener("click", (e) => {
-  const taskList = document.querySelector(".taskList")
+  // const taskList = document.querySelector(".taskList")
+  this.taskList = taskList
   const taskui = new TaskUI()
   taskui.clearCompleted(e.clear)
 
@@ -119,9 +120,9 @@ document.querySelector(".clearTask").addEventListener("click", (e) => {
 
 // Event listener for All
 document.querySelector("#allTask").addEventListener("click", (e) => {
-  const taskList = document.querySelector(".taskList")
-  const taskui = new TaskUI()
-  // taskui.allTask(e.all)
+  this.taskList = taskList
+  // const taskui = new TaskUI()
+  // taskui.allTask(todo)
 
   e.preventDefault()
 })
