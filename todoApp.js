@@ -2,7 +2,6 @@ class Todo {
   constructor(taskInput, taskList) {
     this.taskInput
     this.taskList = taskList
-    // this.todo =
   }
 }
 
@@ -66,11 +65,12 @@ class TaskUI {
   }
 
   clearCompleted(clear) {
-    const taskLength = document.querySelector("#taskLength")
     this.taskList = taskList
-    while (this.taskList.firstChild) {
-      this.taskList.removeChild(this.taskList.firstChild)
-      taskLength.textContent = this.taskList.childElementCount
+    const taskLeft = document.querySelector("#taskLength")
+    for (let i = 0; i < this.taskList.children.length; i++) {
+      if (this.taskList.children[i].firstChild.classList.contains("active")) {
+        this.taskList.children[i].remove()
+      }
     }
   }
 }
@@ -83,20 +83,16 @@ const todo = new Todo(taskList)
 document.querySelector(".taskList").addEventListener("click", (e) => {
   taskui.deleteTask(e.target)
   taskui.allTask()
-
   e.preventDefault()
 })
 
 // Event Listeners
 document.querySelector("#taskForm").addEventListener("keypress", (e) => {
   const taskInput = document.querySelector("#enterTask").value
-
   const taskui = new TaskUI()
-
   if (e.key === "Enter") {
     taskui.addTask(todo, taskInput)
     taskui.allTask()
-
     e.preventDefault()
   }
 })
@@ -110,10 +106,8 @@ document.querySelector(".taskList").addEventListener("click", (e) => {
 
 // Event Listener for clear task
 document.querySelector(".clearTask").addEventListener("click", (e) => {
-  // const taskList = document.querySelector(".taskList")
-  this.taskList = taskList
-  const taskui = new TaskUI()
   taskui.clearCompleted(e.clear)
+  taskui.allTask()
 
   e.preventDefault()
 })
@@ -121,8 +115,6 @@ document.querySelector(".clearTask").addEventListener("click", (e) => {
 // Event listener for All
 document.querySelector("#allTask").addEventListener("click", (e) => {
   this.taskList = taskList
-  // const taskui = new TaskUI()
-  // taskui.allTask(todo)
 
   e.preventDefault()
 })
