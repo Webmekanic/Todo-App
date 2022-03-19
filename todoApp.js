@@ -93,6 +93,7 @@ document.querySelector("#taskForm").addEventListener("keypress", (e) => {
   if (e.key === "Enter") {
     taskui.addTask(todo, taskInput)
     taskui.allTask()
+    // taskui.clearCompleted(clear)
     e.preventDefault()
   }
 })
@@ -120,4 +121,6 @@ document.querySelector("#allTask").addEventListener("click", (e) => {
 })
 
 // Event listener for Active
+document.querySelector("#allTask").addEventListener("click")
+
 // Event listener for completed
