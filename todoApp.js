@@ -73,13 +73,16 @@ class TaskUI {
       }
     }
   }
+
+  //Get All Task
   getAllTask() {
     this.taskList = taskList
-    // const taskLeft = document.querySelector("#taskLength")
     let getAll = []
     for (let i = 0; i < this.taskList.children.length; i++) {
       getAll.push(this.taskList.children[i])
-      console.log(getAll)
+      getAll.forEach((element) => {
+        element.style.display = "flex"
+      })
     }
   }
 }
@@ -102,7 +105,6 @@ document.querySelector("#taskForm").addEventListener("keypress", (e) => {
   if (e.key === "Enter") {
     taskui.addTask(todo, taskInput)
     taskui.allTask()
-    // taskui.clearCompleted(clear)
     e.preventDefault()
   }
 })
@@ -118,14 +120,13 @@ document.querySelector(".taskList").addEventListener("click", (e) => {
 document.querySelector(".clearTask").addEventListener("click", (e) => {
   taskui.clearCompleted(e.clear)
   taskui.allTask()
-
   e.preventDefault()
 })
 
 // / Event listener for All
 document.querySelector("#allTask").addEventListener("click", (e) => {
   taskui.getAllTask()
-  // console.log("hfhfhfhfh")
+  taskui.allTask()
   e.preventDefault()
 })
 
