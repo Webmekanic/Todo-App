@@ -127,13 +127,20 @@ class Store {
     }
     return tasks
   }
-  static addTask(todo) {
+  static displayTask() {
     const tasks = Store.getTask()
 
-    tasks.push(todo)
+    tasks.forEach(function (todo) {})
+  }
+
+  static addTasks(todo, taskInput) {
+    const tasks = Store.getTask()
+
+    tasks.push(todo, taskInput)
 
     localStorage.setItem("tasks", JSON.stringify(tasks))
   }
+
   // static checkedTask() {}
   // static deleteTask() {}
   // static clearCompleted() {}
@@ -150,6 +157,9 @@ document.querySelector(".taskList").addEventListener("click", (e) => {
   e.preventDefault()
 })
 
+// DOM LOAD Event
+document.addEventListener("DOMContentLoaded", Store.displayTask)
+
 // Event Listeners
 document.querySelector("#taskForm").addEventListener("keypress", (e) => {
   const taskInput = document.querySelector("#enterTask").value
@@ -157,7 +167,7 @@ document.querySelector("#taskForm").addEventListener("keypress", (e) => {
   if (e.key === "Enter") {
     taskui.addTask(todo, taskInput)
     // Add to Local Storage
-    Store.addTask(todo)
+    Store.addTasks(todo, taskInput)
     taskui.allTask()
     e.preventDefault()
   }
