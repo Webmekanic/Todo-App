@@ -73,6 +73,15 @@ class TaskUI {
       }
     }
   }
+  getAllTask() {
+    this.taskList = taskList
+    // const taskLeft = document.querySelector("#taskLength")
+    let getAll = []
+    for (let i = 0; i < this.taskList.children.length; i++) {
+      getAll.push(this.taskList.children[i])
+      console.log(getAll)
+    }
+  }
 }
 
 // Event listener for Delete Task
@@ -113,14 +122,25 @@ document.querySelector(".clearTask").addEventListener("click", (e) => {
   e.preventDefault()
 })
 
-// Event listener for All
+// / Event listener for All
 document.querySelector("#allTask").addEventListener("click", (e) => {
-  this.taskList = taskList
-
+  taskui.getAllTask()
+  // console.log("hfhfhfhfh")
   e.preventDefault()
 })
 
 // Event listener for Active
-document.querySelector("#allTask").addEventListener("click")
+document.querySelector("#activeTask").addEventListener("click", (e) => {
+  // this.taskList = taskList
+  console.log("dddd")
+
+  e.preventDefault()
+})
 
 // Event listener for completed
+document.querySelector("#completedTask").addEventListener("click", (e) => {
+  // this.taskList = taskList
+  console.log("jgjgjgj")
+
+  e.preventDefault()
+})
