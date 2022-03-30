@@ -90,9 +90,24 @@ class TaskUI {
     this.taskList = taskList
     let getActive = []
     for (let i = 0; i < this.taskList.children.length; i++) {
+      this.taskList.children[i].style.display = "flex"
       if (this.taskList.children[i].firstChild.classList.contains("active")) {
         getActive.push(this.taskList.children[i])
         getActive.forEach((element) => {
+          element.style.display = "none"
+        })
+      }
+    }
+  }
+
+  getCompletedTask() {
+    this.taskList = taskList
+    let getComplete = []
+    for (let i = 0; i < this.taskList.children.length; i++) {
+      this.taskList.children[i].style.display = "flex"
+      if (!this.taskList.children[i].firstChild.classList.contains("active")) {
+        getComplete.push(this.taskList.children[i])
+        getComplete.forEach((element) => {
           element.style.display = "none"
         })
       }
@@ -151,8 +166,7 @@ document.querySelector("#activeTask").addEventListener("click", (e) => {
 
 // Event listener for completed
 document.querySelector("#completedTask").addEventListener("click", (e) => {
-  // this.taskList = taskList
-  console.log("jgjgjgj")
+  taskui.getCompletedTask()
 
   e.preventDefault()
 })
