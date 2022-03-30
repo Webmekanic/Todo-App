@@ -113,6 +113,30 @@ class TaskUI {
       }
     }
   }
+
+  // Clear Field
+}
+
+class Store {
+  static getTask() {
+    let tasks
+    if (localStorage.getItem("tasks") === null) {
+      tasks = []
+    } else {
+      tasks = JSON.parse(localStorage.getItem("tasks"))
+    }
+    return tasks
+  }
+  static addTask(todo) {
+    const tasks = Store.getTask()
+
+    tasks.push(todo)
+
+    localStorage.setItem("tasks", JSON.stringify(tasks))
+  }
+  // static checkedTask() {}
+  // static deleteTask() {}
+  // static clearCompleted() {}
 }
 
 // Event listener for Delete Task
@@ -132,6 +156,8 @@ document.querySelector("#taskForm").addEventListener("keypress", (e) => {
   const taskui = new TaskUI()
   if (e.key === "Enter") {
     taskui.addTask(todo, taskInput)
+    // Add to Local Storage
+    Store.addTask(todo)
     taskui.allTask()
     e.preventDefault()
   }
