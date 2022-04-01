@@ -1,6 +1,6 @@
 class Todo {
   constructor(taskInput, taskList) {
-    this.taskInput
+    this.taskInput = taskInput
     this.taskList = taskList
   }
 }
@@ -130,13 +130,16 @@ class Store {
   static displayTask() {
     const tasks = Store.getTask()
 
-    tasks.forEach(function (todo) {})
+    tasks.forEach(function (tasks) {
+      taskui.addTask(todo, tasks)
+      taskui.allTask()
+    })
   }
 
-  static addTasks(todo, taskInput) {
+  static addTaskToLocalStorage(taskInput) {
     const tasks = Store.getTask()
 
-    tasks.push(todo, taskInput)
+    tasks.push(taskInput)
 
     localStorage.setItem("tasks", JSON.stringify(tasks))
   }
@@ -146,10 +149,14 @@ class Store {
   // static clearCompleted() {}
 }
 
+// localStorage.clear()
+
 // Event listener for Delete Task
 const taskList = document.querySelector(".taskList")
+const taskInput = document.querySelector("#enterTask").value
+
 const taskui = new TaskUI()
-const todo = new Todo(taskList)
+const todo = new Todo(taskList, taskInput)
 
 document.querySelector(".taskList").addEventListener("click", (e) => {
   taskui.deleteTask(e.target)
@@ -167,7 +174,7 @@ document.querySelector("#taskForm").addEventListener("keypress", (e) => {
   if (e.key === "Enter") {
     taskui.addTask(todo, taskInput)
     // Add to Local Storage
-    Store.addTasks(todo, taskInput)
+    Store.addTaskToLocalStorage(taskInput)
     taskui.allTask()
     e.preventDefault()
   }
