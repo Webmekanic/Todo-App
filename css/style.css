@@ -23,7 +23,7 @@
   --very-dark-grayish-blue1: hsl(233, 14%, 35%);
   --very-dark-grayish-blue: hsl(237, 14%, 26%);
   --image-mobile-dark: url(/images/bg-mobile-dark.jpg);
-  /* --image-desktop-dark: url(/) */
+  --image-desktop-dark: url(/images/bg-desktop-dark.jpg);
   --bright-blue: hsl(220, 98%, 61%);
   --linear-gradient1: hsl(192, 100%, 67%);
   --linear-gradient2: hsl(280, 87%, 65%);
@@ -108,7 +108,7 @@ h1 {
   margin: -2rem auto;
   border-radius: 4px;
   cursor: pointer;
-  background-image: url(./);
+  /* background-image: url(./); */
 }
 
 .tasklist-item {
@@ -224,6 +224,6 @@ h1 {
 }
 @media (min-width: 866px) {
   header {
-    /* background-image: var(--image-desktop-dark); */
+    background-image: var(--image-desktop-dark);
   }
 }

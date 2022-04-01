@@ -114,6 +114,18 @@ class TaskUI {
     }
   }
 
+  changeTheme() {
+    const sun = document.querySelector("#sun")
+    let theBody = document.body
+    if (theBody.classList.contains("dark")) {
+      sun.src = "./images/icon-moon.svg"
+      theBody.className = "light"
+    } else {
+      sun.src = "./images/icon-sun.svg"
+      theBody.className = "dark"
+    }
+  }
+
   // Clear Field
 }
 
@@ -212,4 +224,11 @@ document.querySelector("#completedTask").addEventListener("click", (e) => {
   taskui.getCompletedTask()
 
   e.preventDefault()
+})
+
+// Light Mode
+document.querySelector(".theme").addEventListener("click", (theme) => {
+  taskui.changeTheme()
+
+  // e.preventDefault()
 })
