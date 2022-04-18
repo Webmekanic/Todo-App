@@ -184,10 +184,16 @@ document.querySelector("#taskForm").addEventListener("keypress", (e) => {
   const taskInput = document.querySelector("#enterTask").value
   const taskui = new TaskUI()
   if (e.key === "Enter") {
-    taskui.addTask(todo, taskInput)
-    // Add to Local Storage
-    Store.addTaskToLocalStorage(taskInput)
-    taskui.allTask()
+    if (taskInput === "" || taskInput === null) {
+      alert("Please enter task")
+    } else {
+      taskui.addTask(todo, taskInput)
+      // Add to Local Storage
+      Store.addTaskToLocalStorage(taskInput)
+      taskui.allTask()
+      taskInput = ""
+    }
+
     e.preventDefault()
   }
 })
