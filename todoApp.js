@@ -8,26 +8,30 @@ class Todo {
 class TaskUI {
   addTask(todo, taskInput) {
     this.taskInput = taskInput
-    const taskList = document.querySelector(".taskList")
-    // create element for todo
-    const li = document.createElement("li")
-    li.className = "tasklist-item"
-    const section = document.createElement("section")
-    section.className = "checkMark"
-    const img = document.createElement("img")
-    img.className = "checkIcon"
-    img.setAttribute("src", "./images/icon-check.svg")
-    section.appendChild(img)
-    li.appendChild(section)
-    const pTag = document.createElement("p")
-    pTag.className = "task"
-    pTag.innerHTML = `${this.taskInput}`
-    li.appendChild(pTag)
-    const deleteImg = document.createElement("img")
-    deleteImg.className = "deleteItem"
-    deleteImg.setAttribute("src", "./images/icon-cross.svg")
-    li.appendChild(deleteImg)
-    taskList.appendChild(li)
+    if (taskInput === "") {
+      alert("Add a task")
+    } else {
+      const taskList = document.querySelector(".taskList")
+      // create element for todo
+      const li = document.createElement("li")
+      li.className = "tasklist-item"
+      const section = document.createElement("section")
+      section.className = "checkMark"
+      const img = document.createElement("img")
+      img.className = "checkIcon"
+      img.setAttribute("src", "./images/icon-check.svg")
+      section.appendChild(img)
+      li.appendChild(section)
+      const pTag = document.createElement("p")
+      pTag.className = "task"
+      pTag.innerHTML = `${this.taskInput}`
+      li.appendChild(pTag)
+      const deleteImg = document.createElement("img")
+      deleteImg.className = "deleteItem"
+      deleteImg.setAttribute("src", "./images/icon-cross.svg")
+      li.appendChild(deleteImg)
+      taskList.appendChild(li)
+    }
   }
 
   checkedTask(target) {
@@ -68,6 +72,7 @@ class TaskUI {
     this.taskList = taskList
     const taskLeft = document.querySelector("#taskLength")
     for (let i = 0; i < this.taskList.children.length; i++) {
+      console.log(this.taskList.children[i])
       if (this.taskList.children[i].firstChild.classList.contains("active")) {
         this.taskList.children[i].remove()
       }
@@ -184,16 +189,10 @@ document.querySelector("#taskForm").addEventListener("keypress", (e) => {
   const taskInput = document.querySelector("#enterTask").value
   const taskui = new TaskUI()
   if (e.key === "Enter") {
-    if (taskInput === "" || taskInput === null) {
-      alert("Please enter task")
-    } else {
-      taskui.addTask(todo, taskInput)
-      // Add to Local Storage
-      Store.addTaskToLocalStorage(taskInput)
-      taskui.allTask()
-      taskInput = ""
-    }
-
+    taskui.addTask(todo, taskInput)
+    // Add to Local Storage
+    Store.addTaskToLocalStorage(taskInput)
+    taskui.allTask()
     e.preventDefault()
   }
 })
@@ -209,6 +208,7 @@ document.querySelector(".taskList").addEventListener("click", (e) => {
 document.querySelector(".clearTask").addEventListener("click", (e) => {
   taskui.clearCompleted(e.clear)
   taskui.allTask()
+  // taskui.checkedTask()
   e.preventDefault()
 })
 
